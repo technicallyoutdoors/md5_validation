@@ -16,6 +16,8 @@ entry2 = customtkinter.CTkEntry(master=app, text_color="black", width=180, place
                                 placeholder_text="Enter the actual MD5 hash: ", fg_color='#FF6600')
 entry2.pack(padx=2, pady=2, anchor=tkinter.CENTER)
 
+md5_pass_label = None
+
 
 def button_click_event1():
     output1 = entry1.get()
@@ -36,7 +38,6 @@ def button_click_event1():
         md5_pass()
     if output1 != output2 and len(output2 and output1) > 1:
         md5_failure()
-    
 
 
 def md5_failure():
@@ -55,15 +56,13 @@ def md5_pass():
     md5_pass_label = customtkinter.CTkLabel(
         master=app, text=passed, text_color="black", fg_color="#4169E1", corner_radius=5)
     md5_pass_label.pack(padx=20, pady=20, anchor=tkinter.N)
-  
-  
+
+
 def reset_validation():
+    global md5_pass_label
     md5_pass_label.pack_forget()
     md5_failure_label.pack_forget()
     no_text_label.pack_forget()
-    
-    
-    
 
 
 button1 = customtkinter.CTkButton(app, text="Validate", text_color="black", width=180,
